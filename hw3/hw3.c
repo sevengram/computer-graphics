@@ -41,7 +41,7 @@ int axes = 1;       //  Display axes
  */
 #define LEN 8192  //  Maximum length of text string
 
-void Print(const char *format, ...)
+void print(const char *format, ...)
 {
     char buf[LEN];
     char *ch = buf;
@@ -118,7 +118,7 @@ static void cube(double x, double y, double z,
 /*
  *  Draw vertex in polar coordinates
  */
-static void Vertex(double th, double ph)
+static void vertex(double th, double ph)
 {
     glColor3f(Cos(th) * Cos(th), Sin(ph) * Sin(ph), Sin(th) * Sin(th));
     glVertex3d(Sin(th) * Cos(ph), Sin(ph), Cos(th) * Cos(ph));
@@ -142,9 +142,9 @@ static void sphere(double x, double y, double z, double r)
 
     //  South pole cap
     glBegin(GL_TRIANGLE_FAN);
-    Vertex(0, -90);
+    vertex(0, -90);
     for (th = 0; th <= 360; th += d) {
-        Vertex(th, d - 90);
+        vertex(th, d - 90);
     }
     glEnd();
 
@@ -152,17 +152,17 @@ static void sphere(double x, double y, double z, double r)
     for (ph = d - 90; ph <= 90 - 2 * d; ph += d) {
         glBegin(GL_QUAD_STRIP);
         for (th = 0; th <= 360; th += d) {
-            Vertex(th, ph);
-            Vertex(th, ph + d);
+            vertex(th, ph);
+            vertex(th, ph + d);
         }
         glEnd();
     }
 
     //  North pole cap
     glBegin(GL_TRIANGLE_FAN);
-    Vertex(0, 90);
+    vertex(0, 90);
     for (th = 0; th <= 360; th += d) {
-        Vertex(th, 90 - d);
+        vertex(th, 90 - d);
     }
     glEnd();
 
@@ -190,9 +190,9 @@ static void semisphere(double x, double y, double z, double r)
 
     //  North pole cap
     glBegin(GL_TRIANGLE_FAN);
-    Vertex(0, 90);
+    vertex(0, 90);
     for (th = 0; th <= 360; th += d) {
-        Vertex(th, 90 - d);
+        vertex(th, 90 - d);
     }
     glEnd();
 
@@ -200,8 +200,8 @@ static void semisphere(double x, double y, double z, double r)
     for (ph = 0; ph <= 90 - 2 * d; ph += d) {
         glBegin(GL_QUAD_STRIP);
         for (th = 0; th <= 360; th += d) {
-            Vertex(th, ph);
-            Vertex(th, ph + d);
+            vertex(th, ph);
+            vertex(th, ph + d);
         }
         glEnd();
     }
@@ -243,9 +243,9 @@ static void ufo(double x, double y, double z, double r, double phi, double theta
 
     //  North side
     glBegin(GL_TRIANGLE_FAN);
-    Vertex(0, 90);
+    vertex(0, 90);
     for (th = 0; th <= 360; th += d) {
-        Vertex(th, 90 - a);
+        vertex(th, 90 - a);
     }
     glEnd();
 
@@ -259,9 +259,9 @@ static void ufo(double x, double y, double z, double r, double phi, double theta
 
     //  South side
     glBegin(GL_TRIANGLE_FAN);
-    Vertex(0, -90);
+    vertex(0, -90);
     for (th = 0; th <= 360; th += d) {
-        Vertex(th, a - 90);
+        vertex(th, a - 90);
     }
     glEnd();
 
@@ -351,16 +351,16 @@ void display()
         glEnd();
         //  Label axes
         glRasterPos3d(len, 0.0, 0.0);
-        Print("X");
+        print("X");
         glRasterPos3d(0.0, len, 0.0);
-        Print("Y");
+        print("Y");
         glRasterPos3d(0.0, 0.0, len);
-        Print("Z");
+        print("Z");
     }
     //  Five pixels from the lower left corner of the window
     glWindowPos2i(5, 5);
     //  Print the text string
-    Print("Angle=%d,%d", th, ph);
+    print("Angle=%d,%d", th, ph);
 
     //  Render the scene
     glFlush();

@@ -41,7 +41,7 @@ double dim=5.0;   //  Size of world
  *  Use VARARGS to make this more flexible
  */
 #define LEN 8192  //  Maximum length of text string
-void Print(const char* format , ...)
+void print(const char *format, ...)
 {
    char    buf[LEN];
    char*   ch=buf;
@@ -58,7 +58,7 @@ void Print(const char* format , ...)
 /*
  *  Set projection
  */
-static void Project()
+static void project()
 {
    //  Tell OpenGL we want to manipulate the projection matrix
    glMatrixMode(GL_PROJECTION);
@@ -182,15 +182,15 @@ void display()
       glEnd();
       //  Label axes
       glRasterPos3d(len,0.0,0.0);
-      Print("X");
+      print("X");
       glRasterPos3d(0.0,len,0.0);
-      Print("Y");
+      print("Y");
       glRasterPos3d(0.0,0.0,len);
-      Print("Z");
+      print("Z");
    }
    //  Display parameters
    glWindowPos2i(5,5);
-   Print("Angle=%d,%d  Dim=%.1f FOV=%d Projection=%s",th,ph,dim,fov,mode?"Perpective":"Orthogonal");
+   print("Angle=%d,%d  Dim=%.1f FOV=%d Projection=%s", th, ph, dim, fov, mode ? "Perpective" : "Orthogonal");
    //  Render the scene and make it visible
    glFlush();
    glutSwapBuffers();
@@ -223,7 +223,7 @@ void special(int key,int x,int y)
    th %= 360;
    ph %= 360;
    //  Update projection
-   Project();
+   project();
    //  Tell GLUT it is necessary to redisplay the scene
    glutPostRedisplay();
 }
@@ -251,7 +251,7 @@ void key(unsigned char ch,int x,int y)
    else if (ch == '+' && ch<179)
       fov++;
    //  Reproject
-   Project();
+   project();
    //  Tell GLUT it is necessary to redisplay the scene
    glutPostRedisplay();
 }
@@ -266,7 +266,7 @@ void reshape(int width,int height)
    //  Set the viewport to the entire window
    glViewport(0,0, width,height);
    //  Set projection
-   Project();
+   project();
 }
 
 /*

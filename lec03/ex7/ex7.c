@@ -52,7 +52,7 @@ cube_t Cube[] = {
  *  Use VARARGS to make this more flexible
  */
 #define LEN 8192  //  Maximum length of text string
-void Print(const char* format , ...)
+void print(const char *format, ...)
 {
    char    buf[LEN];
    char*   ch=buf;
@@ -212,9 +212,9 @@ void display()
       //  Print sequence
       glColor3f(1,1,1);
       glWindowPos2i(5,25);
-      Print("Z order");
+      print("Z order");
       for (k=0;k<n;k++)
-         Print(" %d=%.3f",cubep[k]->id,cubep[k]->Zp);
+         print(" %d=%.3f", cubep[k]->id, cubep[k]->Zp);
    }
    //  White
    glColor3f(1,1,1);
@@ -231,17 +231,17 @@ void display()
       glEnd();
       //  Label axes
       glRasterPos3d(len,0.0,0.0);
-      Print("X");
+      print("X");
       glRasterPos3d(0.0,len,0.0);
-      Print("Y");
+      print("Y");
       glRasterPos3d(0.0,0.0,len);
-      Print("Z");
+      print("Z");
    }
    //  Five pixels from the lower left corner of the window
    glWindowPos2i(5,5);
    //  Print the text string
-   Print("Angle=%d,%d  Hidden=%s",th,ph,text[mode]);
-   if (rev) Print(" Reverse");
+   print("Angle=%d,%d  Hidden=%s", th, ph, text[mode]);
+   if (rev) print(" Reverse");
    //  Render the scene
    glFlush();
    //  Make the rendered scene visible

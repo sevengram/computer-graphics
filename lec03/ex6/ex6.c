@@ -38,7 +38,7 @@ char* text[] = {"","2D","3D constant Z","3D","4D"};  // Dimension display text
  *  Use VARARGS to make this more flexible
  */
 #define LEN 8192  // Maximum length of text string
-void Print(const char* format , ...)
+void print(const char *format, ...)
 {
    char    buf[LEN];
    char*   ch=buf;
@@ -116,18 +116,18 @@ void display()
    glEnd();
    //  Label axes
    glRasterPos3d(1,0,0);
-   Print("X");
+   print("X");
    glRasterPos3d(0,1,0);
-   Print("Y");
+   print("Y");
    glRasterPos3d(0,0,1);
-   Print("Z");
+   print("Z");
    //  Display parameters
    glWindowPos2i(5,5);
-   Print("View Angle=%d,%d  %s",th,ph,text[mode]);
+   print("View Angle=%d,%d  %s", th, ph, text[mode]);
    if (mode==2)
-      Print("  z=%.1f",z);
+      print("  z=%.1f", z);
    else if (mode==4)
-      Print("  w=%.1f",w);
+      print("  w=%.1f", w);
    //  Flush and swap
    glFlush();
    glutSwapBuffers();

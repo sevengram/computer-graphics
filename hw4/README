@@ -1,0 +1,29 @@
+Homework 4: Projections
+
+Jianxiang Fan
+jianxiang.fan@colorado.edu
+
+Robots and UFOs
+
+Key bindings:
+
+General
+  a          Toggle axes
+  m          Change current mode
+  ESC        Exit
+
+Orthogonal Mode
+  arrows     Change view angle
+
+Perspective Mode
+  arrows     Change view angle
+  +/-        Changes field of view
+
+First Person Mode
+  up/down      Move forwards/backwards
+  left/right   Turn left/right
+  PgUp/PgDn    Look up/down (less than 90 degrees)
+  +/-          Changes field of view
+
+
+Time spent: 6 hours
